@@ -25,6 +25,8 @@
 		D5B72AA72BCC1C3F00B762EB /* UIBlockingProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B72AA62BCC1C3F00B762EB /* UIBlockingProgressHUD.swift */; };
 		D5B72AA92BCC25CB00B762EB /* TimeConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B72AA82BCC25CB00B762EB /* TimeConverter.swift */; };
 		D5B72AAB2BCC26B800B762EB /* UrlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B72AAA2BCC26B800B762EB /* UrlButton.swift */; };
+		D5B72AAD2BCC538000B762EB /* AlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B72AAC2BCC538000B762EB /* AlertPresenter.swift */; };
+		D5B72AAF2BCC53B100B762EB /* AlertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B72AAE2BCC53B100B762EB /* AlertModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		D5B72AA62BCC1C3F00B762EB /* UIBlockingProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBlockingProgressHUD.swift; sourceTree = "<group>"; };
 		D5B72AA82BCC25CB00B762EB /* TimeConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeConverter.swift; sourceTree = "<group>"; };
 		D5B72AAA2BCC26B800B762EB /* UrlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlButton.swift; sourceTree = "<group>"; };
+		D5B72AAC2BCC538000B762EB /* AlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresenter.swift; sourceTree = "<group>"; };
+		D5B72AAE2BCC53B100B762EB /* AlertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				D5344DB22BC920FA00239C33 /* ContentModel.swift */,
+				D5B72AAE2BCC53B100B762EB /* AlertModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -203,6 +208,7 @@
 			children = (
 				D5B72AA62BCC1C3F00B762EB /* UIBlockingProgressHUD.swift */,
 				D5B72AA82BCC25CB00B762EB /* TimeConverter.swift */,
+				D5B72AAC2BCC538000B762EB /* AlertPresenter.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -288,10 +294,12 @@
 				D5344DA82BC3E9F200239C33 /* ContentCell.swift in Sources */,
 				D5B72AAB2BCC26B800B762EB /* UrlButton.swift in Sources */,
 				D5B72AA72BCC1C3F00B762EB /* UIBlockingProgressHUD.swift in Sources */,
+				D5B72AAD2BCC538000B762EB /* AlertPresenter.swift in Sources */,
 				D5B72AA22BCC1AB000B762EB /* WebViewViewController.swift in Sources */,
 				D5B72A962BCB1DD800B762EB /* CustomLabel.swift in Sources */,
 				D5344DB12BC90F5D00239C33 /* DetailViewController.swift in Sources */,
 				D5344DB32BC920FA00239C33 /* ContentModel.swift in Sources */,
+				D5B72AAF2BCC53B100B762EB /* AlertModel.swift in Sources */,
 				D5344DBB2BCAAEAC00239C33 /* ContentService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

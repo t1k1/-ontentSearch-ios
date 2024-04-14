@@ -11,6 +11,7 @@ import UIKit
 
 protocol ContentViewControllerDelegate: AnyObject {
     func search(_ searchStr: String)
+    func searchErrorAlert(error: String)
 }
 
 // MARK: - ContentViewController
@@ -40,6 +41,7 @@ final class ContentViewController: UIViewController {
     private var searchController: UISearchController?
     private var content: [ContentModel] = []
     private var searchHistory: [String] = []
+    private var alertPresenter: AlertPresenterProtocol?
     private let userDefaultsManager = UserDefaultsService.shared
     private let contentService = ContentService.shared
     
@@ -48,6 +50,7 @@ final class ContentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        alertPresenter = AlertPresenter(delagate: self)
         setupView()
     }
 }
@@ -114,6 +117,7 @@ extension ContentViewController: UICollectionViewDataSource {
         
         guard let cell = cell else { return UICollectionViewCell() }
         
+        cell.delegate = self
         cell.configureCell(contentItem: content[indexPath.row])
         
         return cell
@@ -126,6 +130,24 @@ extension ContentViewController: ContentViewControllerDelegate {
     func search(_ searchStr: String) {
         searchController?.searchBar.text = searchStr
         loadContent(with: searchStr)
+    }
+    
+    func searchErrorAlert(error: String) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.alertPresenter?.show(
+                AlertModel(
+                    title: "Error!",
+                    message: error,
+                    buttonText: "OK")
+            )
+        }
+    }
+}
+
+extension ContentViewController: AlertPresentableDelagate {
+    func present(alert: UIAlertController, animated flag: Bool) {
+        present(alert, animated: flag)
     }
 }
 
@@ -145,8 +167,10 @@ private extension ContentViewController {
                         self.collectionView.reloadData()
                     }
                 case .failure(let error):
-                    //TODO: вывод ошибки
-                    print(error)
+                    DispatchQueue.main.async { [weak self] in
+                        guard let self = self else { return }
+                        self.searchErrorAlert(error: error.localizedDescription)
+                    }
             }
             DispatchQueue.main.async {
                 UIBlockingProgressHUD.dismiss()

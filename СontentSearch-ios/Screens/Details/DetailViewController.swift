@@ -47,6 +47,7 @@ final class DetailViewController: UIViewController {
     
     //MARK: Private variables
     
+    private var alertPresenter: AlertPresenterProtocol?
     private let contentService = ContentService.shared
     private let contentItem: ContentModel
     private var urlContentPage: String?
@@ -68,7 +69,16 @@ final class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        alertPresenter = AlertPresenter(delagate: self)
         configureView()
+    }
+}
+
+//MARK: AlertPresentableDelagate
+
+extension DetailViewController: AlertPresentableDelagate {
+    func present(alert: UIAlertController, animated flag: Bool) {
+        present(alert, animated: flag)
     }
 }
 
@@ -127,8 +137,15 @@ private extension DetailViewController {
                             self.posterImageView.image = image
                         }
                     case .failure(let error):
-                        //TODO: вывод ошибки
-                        print(error)
+                        DispatchQueue.main.async { [weak self] in
+                            guard let self = self else { return }
+                            self.alertPresenter?.show(
+                                AlertModel(
+                                    title: "Error!",
+                                    message: error.localizedDescription,
+                                    buttonText: "OK")
+                            )
+                        }
                 }
             }
         }

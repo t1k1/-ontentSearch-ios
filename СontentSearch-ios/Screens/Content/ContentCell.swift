@@ -12,6 +12,7 @@ final class ContentCell: UICollectionViewCell {
     //MARK: Public functions
     
     static let cellName = "contentCell"
+    weak var delegate: ContentViewControllerDelegate?
     
     //MARK: Layout variables
     
@@ -53,8 +54,9 @@ final class ContentCell: UICollectionViewCell {
                             self.previewImageView.image = image
                         }
                     case .failure(let error):
-                        //TODO: вывод ошибки
-                        print(error)
+                        DispatchQueue.main.async { [weak self] in
+                            self?.delegate?.searchErrorAlert(error: error.localizedDescription)
+                        }
                 }
             }
         }

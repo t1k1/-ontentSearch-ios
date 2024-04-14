@@ -48,7 +48,7 @@ final class ContentService {
         }
         
         guard let url = getFinalURL(with: searchText) else {
-            //TODO: возврат ошибки
+            completion(.failure(NetworkError.decodeDataError))
             return
         }
         
