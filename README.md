@@ -1,3 +1,5 @@
+[Тестовое задание для стажировки в Avito.](https://github.com/avito-tech/iOS-trainee-assignment-2024?tab=readme-ov-file)
+
 Приложение для поиска медиа-контента с помощью iTunes Search API.
 
 Содержит 2 экрана:
