@@ -79,11 +79,11 @@ extension ContentViewController: UISearchBarDelegate {
             }
             searchController?.dismiss(animated: true)
         }
-        
-        func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-            content.removeAll()
-            collectionView.reloadData()
-        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        content.removeAll()
+        collectionView.reloadData()
     }
 }
 
