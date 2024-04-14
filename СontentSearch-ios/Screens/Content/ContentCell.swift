@@ -16,6 +16,7 @@ final class ContentCell: UICollectionViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         imageView.image = UIImage(named: "Placeholder")
+        imageView.contentMode = .scaleAspectFit
         imageView.layer.cornerRadius = 16
         imageView.clipsToBounds = true
         
@@ -53,7 +54,7 @@ final class ContentCell: UICollectionViewCell {
         kindLAbel.text = (contentItem.kind == "feature-movie" ? "MOVIE" : contentItem.kind)?.uppercased()
         nameLabel.text = contentItem.trackName
         costLabel.text = "\(contentItem.trackPrice ?? 0)$"
-        durationLabel.text = convertMillis(contentItem.trackTimeMillis ?? 0, contentKind: kindLAbel.text)
+        durationLabel.text = TimeConverter.convertMillis(contentItem.trackTimeMillis ?? 0, contentKind: kindLAbel.text)
         
         addSubviews()
         configureConstraints()
@@ -61,29 +62,6 @@ final class ContentCell: UICollectionViewCell {
 }
 
 private extension ContentCell {
-    func convertMillis(_ trackTimeMillis: Int, contentKind: String?) -> String {
-        var result = ""
-        
-        let totalSeconds = Double(trackTimeMillis) / 1000
-        let hours = Int(totalSeconds / 3600)
-        let minutes = Int(totalSeconds.truncatingRemainder(dividingBy: 3600) / 60)
-        let seconds = Int(totalSeconds.truncatingRemainder(dividingBy: 60))
-        
-        if contentKind == "MOVIE" {
-            result = "\(hours) h. \(minutes) min."
-        } else if contentKind == "PODCAST" {
-            if hours > 0 {
-                result = "\(hours) h. \(minutes) min."
-            } else if minutes > 0 {
-                result = "\(hours) h. \(minutes) min."
-            }
-        } else if contentKind == "SONG" {
-            result = "\(minutes) min. \(seconds) sec."
-        }
-        
-        return result
-    }
-    
     func addSubviews() {
         addSubview(previewImageView)
         addSubview(kindLAbel)

@@ -28,14 +28,6 @@ final class ContentViewController: UIViewController {
         
         return collectionView
     }()
-    private lazy var loadingIndicator: UIActivityIndicatorView = {
-        let loadingIndicator = UIActivityIndicatorView(style: .medium)
-        loadingIndicator.translatesAutoresizingMaskIntoConstraints = false
-        
-        loadingIndicator.hidesWhenStopped = true
-        
-        return loadingIndicator
-    }()
     
     private var searchController: UISearchController?
     private var content: [ContentModel] = []
@@ -89,7 +81,7 @@ extension ContentViewController: UISearchBarDelegate {
 
 extension ContentViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        showDetails()
+        showDetails(item: content[indexPath.row])
     }
 }
 
@@ -121,7 +113,7 @@ extension ContentViewController: ContentViewControllerDelegate {
 
 private extension ContentViewController {
     func loadContent(with searchText: String) {
-        showloadingIndicator()
+        UIBlockingProgressHUD.show()
         
         contentService.fetchContent(searchText: searchText) { [weak self] result in
             guard let self = self else { return }
@@ -137,7 +129,7 @@ private extension ContentViewController {
                     print(error)
             }
             DispatchQueue.main.async {
-                self.hideloadingIndicator()
+                UIBlockingProgressHUD.dismiss()
             }
         }
     }
@@ -171,8 +163,8 @@ private extension ContentViewController {
         navigationItem.searchController = searchController
     }
     
-    func showDetails() {
-        let detailViewController = DetailViewController()
+    func showDetails(item: ContentModel) {
+        let detailViewController = DetailViewController(contentItem: item)
         navigationController?.pushViewController(detailViewController, animated: true)
     }
     
@@ -184,21 +176,8 @@ private extension ContentViewController {
         searchHistory = userDefaultsManager.loadSearch()
     }
     
-    func showloadingIndicator() {
-        view.isUserInteractionEnabled = false
-        loadingIndicator.startAnimating()
-        searchController?.searchBar.isUserInteractionEnabled = false
-    }
-    
-    func hideloadingIndicator() {
-        loadingIndicator.stopAnimating()
-        view.isUserInteractionEnabled = true
-        searchController?.searchBar.isUserInteractionEnabled = true
-    }
-    
     func addSubViews() {
         view.addSubview(collectionView)
-        view.addSubview(loadingIndicator)
     }
     
     func activateConstraints() {
@@ -206,10 +185,7 @@ private extension ContentViewController {
             collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 4),
-            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            
-            loadingIndicator.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            loadingIndicator.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
+            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
 }

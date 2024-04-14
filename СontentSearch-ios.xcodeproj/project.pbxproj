@@ -21,6 +21,10 @@
 		D5344DB72BC92F4800239C33 /* SearchHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5344DB62BC92F4800239C33 /* SearchHistoryViewController.swift */; };
 		D5344DBB2BCAAEAC00239C33 /* ContentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5344DBA2BCAAEAC00239C33 /* ContentService.swift */; };
 		D5B72A962BCB1DD800B762EB /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B72A952BCB1DD800B762EB /* CustomLabel.swift */; };
+		D5B72AA22BCC1AB000B762EB /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B72AA12BCC1AB000B762EB /* WebViewViewController.swift */; };
+		D5B72AA72BCC1C3F00B762EB /* UIBlockingProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B72AA62BCC1C3F00B762EB /* UIBlockingProgressHUD.swift */; };
+		D5B72AA92BCC25CB00B762EB /* TimeConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B72AA82BCC25CB00B762EB /* TimeConverter.swift */; };
+		D5B72AAB2BCC26B800B762EB /* UrlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B72AAA2BCC26B800B762EB /* UrlButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +44,10 @@
 		D5344DB62BC92F4800239C33 /* SearchHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryViewController.swift; sourceTree = "<group>"; };
 		D5344DBA2BCAAEAC00239C33 /* ContentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentService.swift; sourceTree = "<group>"; };
 		D5B72A952BCB1DD800B762EB /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		D5B72AA12BCC1AB000B762EB /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
+		D5B72AA62BCC1C3F00B762EB /* UIBlockingProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBlockingProgressHUD.swift; sourceTree = "<group>"; };
+		D5B72AA82BCC25CB00B762EB /* TimeConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeConverter.swift; sourceTree = "<group>"; };
+		D5B72AAA2BCC26B800B762EB /* UrlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +112,7 @@
 		D5344DA62BC1333700239C33 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				D5B72AA02BCC1AA000B762EB /* WebView */,
 				D5B72A972BCBF77F00B762EB /* Content */,
 				D5B72A992BCBF7AD00B762EB /* Details */,
 				D5B72A982BCBF7A000B762EB /* SearchHistory */,
@@ -147,6 +156,7 @@
 		D5B72A9A2BCBF7C200B762EB /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				D5B72AA52BCC1C2E00B762EB /* Helpers */,
 				D5B72A9C2BCBF7D700B762EB /* Services */,
 				D5B72A9B2BCBF7C700B762EB /* Components */,
 			);
@@ -158,6 +168,7 @@
 			children = (
 				D5B72A952BCB1DD800B762EB /* CustomLabel.swift */,
 				D5344DA92BC3F16400239C33 /* CustomFlowLayout.swift */,
+				D5B72AAA2BCC26B800B762EB /* UrlButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -177,6 +188,23 @@
 				D5344DB22BC920FA00239C33 /* ContentModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		D5B72AA02BCC1AA000B762EB /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				D5B72AA12BCC1AB000B762EB /* WebViewViewController.swift */,
+			);
+			path = WebView;
+			sourceTree = "<group>";
+		};
+		D5B72AA52BCC1C2E00B762EB /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D5B72AA62BCC1C3F00B762EB /* UIBlockingProgressHUD.swift */,
+				D5B72AA82BCC25CB00B762EB /* TimeConverter.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,11 +280,15 @@
 				D5344DB52BC92AA200239C33 /* UserDefaultsManager.swift in Sources */,
 				D5344D952BC1321200239C33 /* ContentViewController.swift in Sources */,
 				D5344D912BC1321200239C33 /* AppDelegate.swift in Sources */,
+				D5B72AA92BCC25CB00B762EB /* TimeConverter.swift in Sources */,
 				D5344DAF2BC3F26400239C33 /* UIViewController+Extensions.swift in Sources */,
 				D5344DB72BC92F4800239C33 /* SearchHistoryViewController.swift in Sources */,
 				D5344D932BC1321200239C33 /* SceneDelegate.swift in Sources */,
 				D5344DAA2BC3F16400239C33 /* CustomFlowLayout.swift in Sources */,
 				D5344DA82BC3E9F200239C33 /* ContentCell.swift in Sources */,
+				D5B72AAB2BCC26B800B762EB /* UrlButton.swift in Sources */,
+				D5B72AA72BCC1C3F00B762EB /* UIBlockingProgressHUD.swift in Sources */,
+				D5B72AA22BCC1AB000B762EB /* WebViewViewController.swift in Sources */,
 				D5B72A962BCB1DD800B762EB /* CustomLabel.swift in Sources */,
 				D5344DB12BC90F5D00239C33 /* DetailViewController.swift in Sources */,
 				D5344DB32BC920FA00239C33 /* ContentModel.swift in Sources */,

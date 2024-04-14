@@ -31,6 +31,9 @@ struct ContentModel: Codable, Hashable {
     let country: String?
     let currency: String?
     let primaryGenreName: String?
+    let shortDescription: String?
+    let longDescription: String?
+    let description: String?
     
     let artistId: Int?
     let collectionId: Int?
