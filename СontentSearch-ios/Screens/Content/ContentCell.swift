@@ -9,7 +9,11 @@ import UIKit
 
 final class ContentCell: UICollectionViewCell {
     
+    //MARK: Public functions
+    
     static let cellName = "contentCell"
+    
+    //MARK: Layout variables
     
     private lazy var previewImageView: UIImageView = {
         let imageView = UIImageView()
@@ -27,7 +31,11 @@ final class ContentCell: UICollectionViewCell {
     private lazy var nameLabel = CustomLabel(numberOfLines: 2)
     private lazy var costLabel = CustomLabel()
     
+    //MARK: Private variables
+    
     private var contentService = ContentService.shared
+    
+    //MARK: Public functions
     
     func configureCell(contentItem: ContentModel) {
         backgroundColor = .white
@@ -60,6 +68,8 @@ final class ContentCell: UICollectionViewCell {
         configureConstraints()
     }
 }
+
+//MARK: Private functions
 
 private extension ContentCell {
     func addSubviews() {

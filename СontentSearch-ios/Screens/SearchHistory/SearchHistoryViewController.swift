@@ -9,21 +9,31 @@ import UIKit
 
 final class SearchHistoryViewController: UIViewController {
     
+    //MARK: Public variables
+    
     static let cellName = "SearchHistoryCell"
     weak var delegate: ContentViewControllerDelegate?
     
+    //MARK: Private variables
+    
     private let tableView = UITableView()
     private var suggestions: [String] = []
+    
+    //MARK: Lyfecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
     }
     
+    //MARK: Public functions
+    
     func updateSearchHistory(with suggestions: [String]) {
         self.suggestions = suggestions
         tableView.reloadData()
     }
+    
+    //MARK: Private functions
     
     private func configure() {
         view.addSubview(tableView)
@@ -44,6 +54,8 @@ final class SearchHistoryViewController: UIViewController {
         ])
     }
 }
+
+//MARK: UITableViewDelegate, UITableViewDataSource
 
 extension SearchHistoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

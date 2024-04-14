@@ -8,15 +8,15 @@
 import UIKit
 import WebKit
 
-// MARK: - Class
+// MARK: - WebViewViewController
 
 final class WebViewViewController: UIViewController {
-    // MARK: - Private properties
+    // MARK: - Private variables
     
     private let webView = WKWebView()
     private var urlString: String?
     
-    // MARK: - Inits
+    // MARK: - Initialization
     
     init(urlString: String) {
         self.urlString = urlString.lowercased()

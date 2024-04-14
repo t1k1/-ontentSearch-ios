@@ -7,11 +7,17 @@
 
 import UIKit
 
+// MARK: - ContentViewControllerDelegate
+
 protocol ContentViewControllerDelegate: AnyObject {
     func search(_ searchStr: String)
 }
 
+// MARK: - ContentViewController
+
 final class ContentViewController: UIViewController {
+    
+    // MARK: - Layout variables
     
     private lazy var collectionView: UICollectionView = {
         let collectionViewLayout = CustomFlowLayout()
@@ -29,11 +35,15 @@ final class ContentViewController: UIViewController {
         return collectionView
     }()
     
+    // MARK: - Private variables
+    
     private var searchController: UISearchController?
     private var content: [ContentModel] = []
     private var searchHistory: [String] = []
     private let userDefaultsManager = UserDefaultsService.shared
     private let contentService = ContentService.shared
+    
+    // MARK: - Lyfecycle variables
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +65,8 @@ extension ContentViewController: UISearchResultsUpdating {
         )
     }
 }
+
+//MARK: UISearchBarDelegate
 
 extension ContentViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -79,11 +91,15 @@ extension ContentViewController: UISearchBarDelegate {
     }
 }
 
+//MARK: UICollectionViewDelegate
+
 extension ContentViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         showDetails(item: content[indexPath.row])
     }
 }
+
+//MARK: UICollectionViewDataSource
 
 extension ContentViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -104,12 +120,16 @@ extension ContentViewController: UICollectionViewDataSource {
     }
 }
 
+//MARK: ContentViewControllerDelegate
+
 extension ContentViewController: ContentViewControllerDelegate {
     func search(_ searchStr: String) {
         searchController?.searchBar.text = searchStr
         loadContent(with: searchStr)
     }
 }
+
+//MARK: Private functions
 
 private extension ContentViewController {
     func loadContent(with searchText: String) {

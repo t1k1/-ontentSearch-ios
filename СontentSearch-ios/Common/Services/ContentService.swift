@@ -7,6 +7,8 @@
 
 import UIKit
 
+// MARK: NetworkError
+
 enum NetworkError: Error {
     case httpStatusCode(Int)
     case urlRequestError(Error)
@@ -15,15 +17,25 @@ enum NetworkError: Error {
     case getImageError
 }
 
+// MARK: ContentService
+
 final class ContentService {
+    
+    // MARK: Public variables
+    
     static let shared = ContentService()
+    
+    // MARK: Private variables
     
     private let urlSession = URLSession.shared
     private var task: URLSessionTask?
     private let imageCache = NSCache<NSString, UIImage>()
     
     //MARK: - Initialization
+    
     private init() { }
+    
+    // MARK: Public functions
     
     func fetchContent(
         searchText: String,
@@ -107,6 +119,8 @@ final class ContentService {
         task.resume()
     }
 }
+
+// MARK: Private functions
 
 private extension ContentService {
     func getFinalURL(with param: String) -> URL? {

@@ -7,7 +7,10 @@
 
 import UIKit
 
-final class DetailViewController: UIViewController {    
+final class DetailViewController: UIViewController {   
+    
+    //MARK: Layout variables
+    
     private lazy var posterImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -42,10 +45,14 @@ final class DetailViewController: UIViewController {
     private lazy var authorPageButton = UrlButton(title: "Перейти на страницу автора")
     private lazy var descriptionTextView = CustomLabel(numberOfLines: 0)
     
+    //MARK: Private variables
+    
     private let contentService = ContentService.shared
     private let contentItem: ContentModel
     private var urlContentPage: String?
     private var urlAuthorPage: String?
+    
+    //MARK: Initialization
     
     init(contentItem: ContentModel) {
         self.contentItem = contentItem
@@ -56,12 +63,16 @@ final class DetailViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: Lyfecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureView()
     }
 }
+
+//MARK: Private functions
 
 private extension DetailViewController {
     func configureView() {
